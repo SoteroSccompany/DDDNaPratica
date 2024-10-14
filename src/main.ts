@@ -11,9 +11,9 @@ custommer.Address = address;
 custommer.activate();
 //Isso aqui faz parte de um bloco de agregado 
 
-const item1 = new OrderItem("1", "item1", 10)
-const item2 = new OrderItem("2", "item2", 20)
-const order = new Order("1", "123", [item1, item2])
+// const item1 = new OrderItem("1", "item1","", 10)
+// const item2 = new OrderItem("2", "item2","", 20)
+// const order = new Order("1", "123", [item1, item2])
 //Isso aqui faz parte de outro bloco agregado 
 
 
