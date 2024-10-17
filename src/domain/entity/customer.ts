@@ -5,16 +5,13 @@ export default class Customer {
     private _id: string;
     private _name: string;
     private _address!: Address;
-    private _activate: boolean = true;
+    private _activate: boolean = false;
+    private _rewardPoints: number = 0;
 
     constructor(id: string, name: string) {
         this._id = id;
         this._name = name;
         this.validate();
-    }
-
-    get name(): string {
-        return this._name;
     }
 
     isActive(): boolean {
@@ -28,6 +25,9 @@ export default class Customer {
         }
         if (this._id.length === 0) {
             throw new Error('Id is required');
+        }
+        if (this._rewardPoints !== 0) {
+            throw new Error('Points must be 0');
         }
     }
 
@@ -49,9 +49,35 @@ export default class Customer {
         this._activate = false;
     }
 
+    addRewardPoints(points: number): void {
+        const isActive = this.isActive();
+        if (isActive) {
+            this._rewardPoints += points;
+        } else {
+            throw new Error('Customer is not active');
+        }
+    }
+
+    get id(): string {
+        return this._id;
+    }
+
+    get points(): number {
+        return this._rewardPoints;
+    }
+
+
+    get name(): string {
+        return this._name;
+    }
+
+
+
     set Address(address: Address) {
         this._address = address;
     }
+
+
 
 
     /*

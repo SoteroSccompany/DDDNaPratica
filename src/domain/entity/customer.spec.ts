@@ -51,6 +51,25 @@ describe("Customer unit test", () => {
 
     });
 
+    it("should throw error when add points in customer deactive", () => {
+        const customer = new Customer("123", "Gabriel")
+        expect(() => {
+            customer.addRewardPoints(100)
+        }).toThrow('Customer is not active')
+    })
+
+    it("should add points in customer", () => {
+        const customer = new Customer("123", "Gabriel")
+        const addres = new Address("Rua 1", 123, "Bh", "Mg", "30770400")
+        customer.Address = addres
+        customer.activate()
+        expect(customer.points).toBe(0)
+        customer.addRewardPoints(100)
+        expect(customer.points).toBe(100)
+        customer.addRewardPoints(100)
+        expect(customer.points).toBe(200)
+    })
+
 
 
 
