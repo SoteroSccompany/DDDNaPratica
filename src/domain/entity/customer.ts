@@ -18,6 +18,10 @@ export default class Customer {
         return this._activate;
     }
 
+    changeAddress(address: Address): void {
+        this._address = address;
+    }
+
 
     validate(): void {
         if (this._name.length === 0) {
@@ -71,6 +75,9 @@ export default class Customer {
         return this._name;
     }
 
+    get Address(): Address {
+        return this._address;
+    }
 
 
     set Address(address: Address) {

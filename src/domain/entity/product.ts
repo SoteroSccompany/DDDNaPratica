@@ -44,5 +44,9 @@ export default class Product {
         return this._price;
     }
 
+    get id(): string {
+        return this._id;
+    }
+
 
 }
