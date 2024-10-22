@@ -34,4 +34,19 @@ describe("Order service unit test", () => {
         expect(total).toBe(500);
     });
 
+    it("should changeCustomer of a order", () => {
+        const customer = new Customer("c1", "customer 1");
+        const address = new Address("street1", 498, "city1", "state1", "30770400");
+        customer.Address = address;
+        customer.activate();
+        const item = new OrderItem("i1", "item 1", 100, "p1", 1);
+        const customer2 = new Customer("c2", "customer 2");
+        const address2 = new Address("street2", 498, "city2", "state2", "30770400");
+        customer2.Address = address2;
+        customer2.activate();
+        const order = OrderService.placeOrder(customer, [item]);
+        OrderService.changeCustomer(customer2, order);
+        expect(order.customerId).toBe("c2");
+    });
+
 });

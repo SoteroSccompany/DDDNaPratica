@@ -9,20 +9,23 @@ export default class OrderService {
         if (items.length === 0) {
             throw new Error('Order must have at least one item');
         }
+        const isActive = customer.isActive();
+        if (!isActive) {
+            throw new Error('Customer is not active');
+        }
         const order = new Order(uuid(), customer.id, items);
         const points = order.total() / 2;
         customer.addRewardPoints(points);
         return order;
     }
 
-    //Minha implementacao -> comentar em relacao a da aula
-    // static placeOrder(customer: Customer, items: OrderItem[]): Order {
-    //     //A quantidade de pontos sera ifual a metade do valor dos precos
-    //     const order = new Order("o1", customer.idCustomer, items);
-    //     const points = order.total() / 2;
-    //     customer.addRewardPoints(points);
-    //     return order;
-    // }
+    static changeCustomer(customer: Customer, order: Order): void {
+        if (!customer.isActive()) {
+            throw new Error('Customer is not active');
+        }
+        order.changeCustomer(customer.id);
+    }
+
 
     static total(orders: Order[]): number {
         return orders.reduce((acc, order) => {
