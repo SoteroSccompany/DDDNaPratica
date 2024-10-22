@@ -194,7 +194,7 @@ describe("Order Repository unit test", () => {
         for (const it of orders) {
             console.log(it)
         }
-        console.log(order)
+        console.log(order.items[0].price)
 
         expect(orders).toStrictEqual([order, order2]);
 
