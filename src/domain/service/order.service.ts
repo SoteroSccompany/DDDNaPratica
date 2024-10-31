@@ -27,6 +27,7 @@ export default class OrderService {
     }
 
 
+
     static total(orders: Order[]): number {
         return orders.reduce((acc, order) => {
             const total = order.total();

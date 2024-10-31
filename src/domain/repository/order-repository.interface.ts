@@ -4,7 +4,9 @@ import RepositoryInterface from "./repository-interface";
 
 
 export default interface OrderRepositoryInterface extends RepositoryInterface<Order> {
-    updateItem(entity: OrderItem): Promise<void>;
-    findByOrderId(id: string): Promise<OrderItem>;
-    findByItemId(id: string): Promise<OrderItem>;
+    updateItems(entity: Order): Promise<void>;
+    findByOrderId(id: string): Promise<Order>;
+    findByItemId(id: string): Promise<Order>;
+    findItemByItemId(id: string): Promise<OrderItem>;
+    findAllItemsByOrderId(id: string): Promise<OrderItem[]>;
 }

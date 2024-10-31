@@ -31,11 +31,15 @@ export default class OrderItem {
     }
 
     get price(): number {
-        return this._price * this._quantity;
+        return this._price;
     }
 
     get quantity(): number {
         return this._quantity;
+    }
+
+    get total(): number {
+        return this._price * this._quantity;
     }
 
     validate(): boolean {
@@ -56,5 +60,24 @@ export default class OrderItem {
         }
         return true;
     }
+
+    changeQuantity(quantity: number): void {
+        if (quantity <= 0) {
+            throw new Error('Quantity must be greater than zero');
+        } else {
+            this._quantity = quantity;
+        }
+    }
+
+    changePrice(price: number): void {
+        if (price <= 0) {
+            throw new Error('Price must be greater than zero');
+        } else {
+            this._price = price;
+        }
+    }
+
+
+
 
 }
