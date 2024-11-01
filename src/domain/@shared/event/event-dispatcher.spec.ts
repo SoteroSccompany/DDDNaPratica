@@ -8,6 +8,7 @@ import CheckStokWhenProductIsCreated from "../../product/event/handler/check-sto
 import SendEmailWhenProductIsCreatedHandler from "../../product/event/handler/send-email-when-product-is-created.handler";
 import ProductCreatedEvent from "../../product/event/product-created.event";
 import EventDispatcher from "./event-dispatcher";
+import CustomerAddressEvent from "../../customer/event/customer-address.event";
 
 
 describe("Domain events tests", () => {
@@ -114,9 +115,9 @@ describe("Domain events tests", () => {
         const address2 = new Address("Rua 2", 123, "Bh", "MG", "30770400");
         customer.changeAddress(address2);
 
-        const customerEvent = new CustomerEvent(customer);
+        const customerEvent = new CustomerAddressEvent(customer);
 
-        eventDispatcher.register("CustomerEvent", eventHandler);
+        eventDispatcher.register("CustomerAddressEvent", eventHandler);
 
         eventDispatcher.notify(customerEvent);
 
